@@ -15,8 +15,9 @@ function MovieDetail({details, closeDetail}) {
     return(
         // 상세설명 부분
         <div className="detailContainer">
-            <div className="backdropContainer">
-                <img className="backdropImg" src={backdrop_img} alt={details.title}></img>           
+            <div className="backdropContainer"> 
+                <img className="backdropImg" src={backdrop_img} alt={details.title}></img>
+                <div className="backShadow"></div> 
             </div>
             <div className="movieDetail">
                         <div><img className="detailImg" src={poster_img} alt={details.title}></img></div>

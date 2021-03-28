@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
 * {
   margin: 0;
+  font-family: "Lato", sans-serif;
 }
 
 body {
@@ -14,8 +17,11 @@ main {
   display: flex;
   flex-flow: row nowrap;
 }
+section {
+  padding-bottom: 100vh;
+}
 .HeaderContainer {
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 60px;
   display: flex;
@@ -55,7 +61,7 @@ main {
 .headerSearch button {
   position: absolute;
   border-style: none;
-  top: 19px;
+  top: 17px;
   left: 300px;
   background-color: #0c1629;
   color: rgb(226, 226, 226);
@@ -73,27 +79,27 @@ aside {
   flex-direction: column;
   min-width: 90px;
   box-shadow: 2px 1px 5px #111113;
+  z-index: 1;
 }
 .NavContainer {
   display: flex;
-  position: fixed;
   margin-top: 80px;
-  align-items: center;
   flex-direction: column;
 }
 .NavContainer div {
   text-align: center;
 }
 .NavContainer button {
-  width: 70px;
-  height: 70px;
-  margin: 10px;
   background-color: #0f1b35;
   color: #55a7f3;
   border-style: none;
   font-size: 18px;
   outline: none;
   cursor: pointer;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  margin: 20px 10px;
 }
 .NavContainer button:active {
   background-color: #1c305c;
@@ -107,7 +113,9 @@ aside {
   color: rgb(226, 226, 226);
   padding-top: 5px;
 }
-
+.NavContainer svg {
+  font-size: 45px;
+}
 .Moive_Container {
   display: flex;
   flex-flow: row wrap;
@@ -135,13 +143,13 @@ aside {
   transition: all ease 0.5s;
 }
 .Release_Date {
-  font-size: 12px;
+  font-size: 16px;
   color: #c4c2c2;
   margin: 10px 0 5px;
 }
 .Movie_Title {
   width: 100%;
-  font-size: 14px;
+  font-size: 16px;
 }
 .Movie_Poster {
   width: 100%;
@@ -156,7 +164,7 @@ aside {
   top: 17px;
   right: 23px;
   font-size: 30px;
-  background-color: rgb(8, 15, 29);
+  background: none;
   color: white;
   border-style: none;
   cursor: pointer;
@@ -171,6 +179,9 @@ aside {
   height: 100vh;
   margin-top: 60px;
   justify-content: center;
+  background: fixed;
+  top: 0;
+  flex-wrap: wrap;
 }
 .backdropContainer {
   width: 100%;
@@ -182,21 +193,26 @@ aside {
   object-fit: cover;
   opacity: 0.2;
 }
+/* .backShadow {
+  box-shadow: inset 0 -0px 95px 99px #182b55;
+  height: 50vh;
+  position: absolute;
+  top: 60px;
+  width: 91.4%;
+} */
 .movieDetail {
   display: flex;
-  position: absolute;
+  position: relative;
   background-color: rgb(8, 15, 29);
-  width: 800px;
-  height: 400px;
+  width: 950px;
   padding: 40px;
   border-radius: 7px;
   align-items: center;
-  /* bottom: 500px; */
-  top: 25%;
+  bottom: 30vh;
 }
 
 .detailImg {
-  max-width: 300px;
+  width: 350px;
   height: 400px;
   object-fit: cover;
   border-radius: 5px;
@@ -208,42 +224,46 @@ aside {
   padding: 0 50px;
 }
 .detailTitle {
-  font-size: 34px;
+  font-size: 40px;
   padding-bottom: 20px;
 }
 .detailGenres {
-  font-size: 14px;
+  font-size: 18px;
   padding-bottom: 10px;
+  color: #b8b8b8;
 }
 .detailRuntime {
-  font-size: 14px;
+  font-size: 18px;
   padding-bottom: 10px;
+  color: #b8b8b8;
 }
 .detailDate {
-  font-size: 14px;
-  padding-bottom: 10px;
+  font-size: 18px;
+  padding-bottom: 20px;
+  color: #b8b8b8;
 }
 .detailVote {
-  padding-bottom: 10px;
+  padding-bottom: 35px;
 }
 .detailOverviewTitle {
-  font-size: 20px;
+  font-size: 24px;
   padding-bottom: 10px;
 }
 .detailOverview {
-  font-size: 16px;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .modalDiv {
   position: fixed;
-  background-color: red;
+  background-color: rgb(255, 86, 86);
   top: -100px;
   right: 30px;
   cursor: pointer;
-  height: 150px;
+  height: 100px;
   width: 300px;
   text-align: center;
-  line-height: 150px;
+  line-height: 100px;
   border-radius: 10px;
   transition-duration: 0.5s;
 }
@@ -253,4 +273,52 @@ aside {
 }
 .modalText {
   font-size: 24px;
+}
+@media screen and (max-width: 1024px) {
+  aside {
+    min-width: 70px;
+  }
+  .NavContainer button {
+    margin: 10px 5px;
+    background-color: #0f1b35;
+    color: #55a7f3;
+    border-style: none;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+  }
+  .movieDetail {
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    align-items: flex-start;
+    padding: 20px;
+    bottom: 46vh;
+  }
+  .NavContainer svg {
+    font-size: 35px;
+  }
+  .detailImg {
+    width: 240px;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 6px 6px 14px rgb(0 0 0 / 42%);
+  }
+  .detailInfo {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .closeBtn {
+    position: absolute;
+    top: -24px;
+    right: 23px;
+    font-size: 30px;
+    background: none;
+    color: white;
+    border-style: none;
+    cursor: pointer;
+    border-radius: 30px;
+    outline: none;
+  }
 }

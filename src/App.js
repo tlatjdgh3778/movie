@@ -46,14 +46,14 @@ function App() {
         if(search_response_data.results.length>0){
           setMovie({...movie, results:search_response_data.results, detail:false});
         }else{
-        setMovie({...movie, alert:true, alertMsg:"movie not found"});
+        setMovie({...movie, alert:true, alertMsg:"Movie not found"});
         setTimeout(()=>{
           setMovie({...movie, alert:false});
         },2000);
         }
 
       }else{
-        setMovie({...movie, alert:true, alertMsg:"제목을 입력해주세요."});
+        setMovie({...movie, alert:true, alertMsg:"Please enter the title"});
         setTimeout(()=>{
           setMovie({...movie, alert:false});
         },2000);
