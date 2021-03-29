@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function FilterNav({filterBtn}) {
 
     const onClick = (e) => {
-        if(e.target.nodeName==='BUTTON'||e.target.nodeName=='DIV'){
+        if(e.target.nodeName==='BUTTON'||e.target.nodeName==='DIV'){
             filterBtn(e.target.className);
         }else{
             if(e.target.nodeName==='svg'){
