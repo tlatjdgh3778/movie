@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import MovieGenre from "./MovieGenre";
 
 // import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
+import { faTimesCircle,faHeart } from "@fortawesome/free-regular-svg-icons";
+import {  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function MovieDetail({details, closeDetail}) {
+    const [state, setState] = useState({
+        id:'',
+        good:false,
+    })
     const null_img = "http://collaboparty1004.cafe24.com/xe/files/attach/images/139/483/d8c711f2e76e6be056d911b8fbed47fd.jpg";
     const poster_img = details.poster_path===null?null_img:`https://image.tmdb.org/t/p/original/${details.poster_path}`;
     const backdrop_img = details.backdrop_path===null?null_img :`https://image.tmdb.org/t/p/original/${details.backdrop_path}`;
@@ -14,7 +19,19 @@ function MovieDetail({details, closeDetail}) {
     const onClick = (e) => {
         closeDetail();
     }
-    console.log(details);
+    const deleteLocal = () => {
+        localStorage.removeItem(state.id);
+        setState({id:'',good:false});
+    }
+    const pushLocal = () => {
+        localStorage.setItem(details.id, JSON.stringify({
+            id:details.id,
+            title:details.title,
+            poster_img:poster_img,
+        }));
+        setState({id:details.id, good:true});
+
+    }
     return(
         // detail 페이지 부분
         <div className="detailContainer">
@@ -24,7 +41,9 @@ function MovieDetail({details, closeDetail}) {
             </div>
             <div className="movieDetail">
                 <div><img className="detailImg" src={poster_img} alt={details.title}></img></div>
-                <button className="closeBtn" onClick={onClick}><FontAwesomeIcon icon={faTimesCircle}/></button>
+                {state.good?<button className="fillHeart" onClick={deleteLocal}>❤</button>:
+                <button className="emptyHeart" onClick={pushLocal}><FontAwesomeIcon icon={faHeart}/></button>}
+                <button className="closeBtn" onClick={onClick}><FontAwesomeIcon icon={faTimesCircle}/></button>            
                 <div className="detailInfo">
                     <div className="detailTitle">{details.title}</div>
                     <div className="detailGenres">

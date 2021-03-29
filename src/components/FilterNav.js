@@ -1,7 +1,8 @@
 import React from "react";
-import { faThumbsUp, faFire, faSplotch, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faHeart, faSplotch, faPlay } from "@fortawesome/free-solid-svg-icons";
 import {  } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import GoodMovie from './GoodMovie';
 
 function FilterNav({filterBtn}) {
 
@@ -17,10 +18,9 @@ function FilterNav({filterBtn}) {
             }
         }
     }
-
     return(
         <>
-            <div className="NavContainer">
+            <div className="navContainer">
                 <button onClick={onClick} className="popular">
                     <FontAwesomeIcon icon={faThumbsUp}/>
                     <div className="popular">인기</div>
@@ -34,6 +34,10 @@ function FilterNav({filterBtn}) {
                     <FontAwesomeIcon icon={faPlay}/>
                     <div className="now_playing">상영중</div>
                     {/* <div className="now_playing">Playing</div> */}
+                </button>
+                <button onClick={onClick} className="good">
+                    <FontAwesomeIcon icon={faHeart}/>
+                    <div className="good">좋아요</div>
                 </button>
             </div>
         </>

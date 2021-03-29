@@ -4,6 +4,7 @@ import DisplayMovie from './components/DisplayMovie';
 import MovieSearch from './components/MovieSearch';
 import MovieDetail from './components/MovieDetail';
 import AlertModal from './components/AlertModal';
+import GoodMovie from './components/GoodMovie';
 
 function App() {
 
@@ -16,15 +17,21 @@ function App() {
     details:[],
     alert:false,
     alertMsg:'',
+    goodBtn:false,
   })
 
   // filter button 을 누르면 popular, top rated, now playing 중에 해당하는 value 값을 가져와서(name) targetBtn에 저장
   const filterBtn = async (name) => {
     const targetBtn  = name;
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${targetBtn}?api_key=${API_KEY}&language=ko&page=1`);
+    if(targetBtn==='good'){
+       setMovie({...movie, detail:false, filterType:targetBtn, goodBtn:true});
+    }else{
+      const response = await fetch(`https://api.themoviedb.org/3/movie/${targetBtn}?api_key=${API_KEY}&language=ko&page=1`);
 
-    const data = await response.json();
-    setMovie({...movie, filterType:targetBtn, results:data.results, detail:false});
+      const data = await response.json();
+      setMovie({...movie, filterType:targetBtn, results:data.results, detail:false, goodBtn:false});
+    }
+
   }
 
   // 검색창에 입력한 값(data)를 searchDataMovie로 전달
@@ -44,7 +51,7 @@ function App() {
         const search_response_data = await search_response.json();
         
         if(search_response_data.results.length>0){
-          setMovie({...movie, results:search_response_data.results, detail:false});
+          setMovie({...movie, results:search_response_data.results, detail:false, goodBtn:false});
         }else{
           setMovie({...movie, alert:true, alertMsg:"Movie not found"});
           setTimeout(()=>{
@@ -76,8 +83,7 @@ function App() {
     const id_response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=ko`);
 
     const id_response_data = await id_response.json();
-    console.log(id_response_data);
-    setMovie({...movie, details:id_response_data, detail:true, id:id });
+    setMovie({...movie, details:id_response_data, detail:true, id:id, goodBtn:false });
   }
 
   // 제일 처음 화면에는 popular 목록들을 보여줌
@@ -102,7 +108,6 @@ function App() {
         ></FilterNav>
       </aside>
       <section>
-        {/* detail true 면 MovieDetail 보여주고 false 면 DisplayMovie 를 보여줌 */}
         {movie.detail?
         <MovieDetail
         details={movie.details}
@@ -114,6 +119,7 @@ function App() {
         results={movie.results}
         detail={movie.detail}
         getMovieID={getMovieID}
+        goodBtn={movie.goodBtn}
         ></DisplayMovie>}
       </section>
     </main>

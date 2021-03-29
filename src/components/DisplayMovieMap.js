@@ -9,10 +9,10 @@ function DisplayMovieMap({result, getMovieID}) {
         getMovieID(result.id);
     }
     return(
-        <div className="Movies" onClick={onGetMovieID}>
-            <img className="Movie_Poster" src={poster_img} alt={result.title}></img>
-            <div className="Release_Date">{result.release_date.split('-')[0]}</div>
-            <div className="Movie_Title">
+        <div className="movies" onClick={onGetMovieID}>
+            <img className="moviePoster" src={poster_img} alt={result.title}></img>
+            <div className="releaseDate">{result.release_date.split('-')[0]}</div>
+            <div className="movieTitle">
                 <p>{result.title}</p>
             </div>
         </div>
