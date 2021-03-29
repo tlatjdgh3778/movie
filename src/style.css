@@ -274,7 +274,7 @@ aside {
 .modalText {
   font-size: 24px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1130px) {
   aside {
     min-width: 70px;
   }

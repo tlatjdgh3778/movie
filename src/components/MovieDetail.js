@@ -1,4 +1,6 @@
 import React from "react";
+import MovieGenre from "./MovieGenre";
+
 // import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { faTimesCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,43 +15,37 @@ function MovieDetail({details, closeDetail}) {
         closeDetail();
     }
     return(
-        // 상세설명 부분
+        // detail 페이지 부분
         <div className="detailContainer">
             <div className="backdropContainer"> 
                 <img className="backdropImg" src={backdrop_img} alt={details.title}></img>
                 <div className="backShadow"></div> 
             </div>
             <div className="movieDetail">
-                        <div><img className="detailImg" src={poster_img} alt={details.title}></img></div>
-                        <button className="closeBtn" onClick={onClick}><FontAwesomeIcon icon={faTimesCircle}/></button>
-                        <div className="detailInfo">
-                            <div className="detailTitle">{details.title}</div>
-                            <div className="detailGenres">
-                                <span>Genres : </span>
-                                <span>{details.genres.map((genre)=>{
-                                    return <MovieGenres key={genre.id} genre={genre.name}></MovieGenres>
-                                })}</span>
-                            </div>
-                            <div className="detailRuntime">
-                                <span>Runtime : </span>
-                                <span>{details.runtime} min</span>
-                            </div>
-                            <div className="detailDate">
-                                <span>Release Date : </span>
-                                <span>{details.release_date}</span>
-                            </div>
-                            <div className="detailVote">{details.vote_average} / 10</div>
-                            <div className="detailOverviewTitle">Overview</div>
-                            <div className="detailOverview">{details.overview}</div>
-                        </div>
+                <div><img className="detailImg" src={poster_img} alt={details.title}></img></div>
+                <button className="closeBtn" onClick={onClick}><FontAwesomeIcon icon={faTimesCircle}/></button>
+                <div className="detailInfo">
+                    <div className="detailTitle">{details.title}</div>
+                    <div className="detailGenres">
+                        <span>Genres : </span>
+                        <span>{details.genres.map((genre)=>{
+                            return <MovieGenre key={genre.id} genre={genre.name}></MovieGenre>
+                        })}</span>
                     </div>
+                    <div className="detailRuntime">
+                        <span>Runtime : </span>
+                        <span>{details.runtime} min</span>
+                    </div>
+                    <div className="detailDate">
+                        <span>Release Date : </span>
+                        <span>{details.release_date}</span>
+                    </div>
+                    <div className="detailVote">{details.vote_average} / 10</div>
+                    <div className="detailOverviewTitle">Overview</div>
+                    <div className="detailOverview">{details.overview}</div>
+                </div>
+            </div>
         </div>
-    );
-}
-function MovieGenres({genre}) {
-
-    return(
-        <span>{genre} </span>
     );
 }
 

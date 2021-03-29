@@ -1,6 +1,6 @@
 import React from "react";
 
-function Modal({alertShow, alertMsg}) {
+function AlertModal({alertShow, alertMsg}) {
     return(
       <>
         <div className={alertShow?"modalDiv modalActive" :"modalDiv"}>
@@ -10,4 +10,4 @@ function Modal({alertShow, alertMsg}) {
     );
   }
 
-export default Modal;
+export default AlertModal;

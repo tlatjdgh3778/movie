@@ -2,9 +2,10 @@ import React, {useState} from "react";
 import { faSearch, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function MovieSearch({searchData, closeDetail}) {
+function MovieSearch({searchData}) {
 
     const [text, setText] = useState('');
+
     const onChange = (e) => {
         setText(e.target.value);
     }
@@ -13,7 +14,6 @@ function MovieSearch({searchData, closeDetail}) {
         e.preventDefault();
         searchData(text);
         setText('');
-        
     }
 
     return(
@@ -23,7 +23,6 @@ function MovieSearch({searchData, closeDetail}) {
             <form className="headerSearch">
                 <input onChange={onChange} type="text" value={text} placeholder="Search movie..."></input>
                 <button onClick={onClick} ><FontAwesomeIcon icon={faSearch}/></button>
-                
             </form>
         </div>
         </>

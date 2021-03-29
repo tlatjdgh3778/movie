@@ -1,7 +1,7 @@
 import React from "react";
 import DisplayMovieMap from "./DisplayMovieMap";
 
-function DisplayMovie({filterType, results, detail, showDetail, getMovieID}) {
+function DisplayMovie({filterType, results, detail, getMovieID}) {
     // const movie_image = `https://image.tmdb.org/t/p/original/${}`;
     let currentPage = "";
     if(filterType==='popular'){
