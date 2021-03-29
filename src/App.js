@@ -7,7 +7,7 @@ import AlertModal from './components/AlertModal';
 
 function App() {
 
-  const API_KEY = "8df3ad55340084ac780b98e8fa62f3d4";
+  const API_KEY = process.env.REACT_APP_API_KEY;
   const [movie, setMovie] = useState({
     filterType : '',
     results: [],
