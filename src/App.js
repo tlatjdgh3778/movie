@@ -38,7 +38,7 @@ function App() {
   // 해당하는 영화가 있으면 setMovie로 해당하는 영화들에 대한 정보를 results 에 저장
   const searchDataMovie = async (search_data, e) => {
 
-      if(search_data.length>0){
+      try{
         const search_response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${search_data}&page=1&include_adult=false`);
 
         const search_response_data = await search_response.json();
@@ -51,11 +51,12 @@ function App() {
             setMovie({...movie, alert:false});
           },2000);
         }
-      }else{
+      }catch(error){
+        console.log(error);
         setMovie({...movie, alert:true, alertMsg:"Please enter the title"});
         setTimeout(()=>{
           setMovie({...movie, alert:false});
-        },2000);
+        },2000);;
       }
   }
 
