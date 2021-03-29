@@ -21,7 +21,7 @@ function App() {
   // filter button 을 누르면 popular, top rated, now playing 중에 해당하는 value 값을 가져와서(name) targetBtn에 저장
   const filterBtn = async (name) => {
     const targetBtn  = name;
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${targetBtn}?api_key=${API_KEY}&language=en-US&page=1`);
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${targetBtn}?api_key=${API_KEY}&language=ko&page=1`);
 
     const data = await response.json();
     setMovie({...movie, filterType:targetBtn, results:data.results, detail:false});
@@ -39,7 +39,7 @@ function App() {
   const searchDataMovie = async (search_data, e) => {
 
       try{
-        const search_response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${search_data}&page=1&include_adult=false`);
+        const search_response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=ko&query=${search_data}&page=1&include_adult=false`);
 
         const search_response_data = await search_response.json();
         
@@ -73,9 +73,10 @@ function App() {
   // detail을 true 로 바꿔주면서 해당 영화의 detail 페이지를 보여줌
   const getMovieID = async(id) => {
       
-    const id_response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`);
+    const id_response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=ko`);
 
     const id_response_data = await id_response.json();
+    console.log(id_response_data);
     setMovie({...movie, details:id_response_data, detail:true, id:id });
   }
 

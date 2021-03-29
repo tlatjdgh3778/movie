@@ -23,17 +23,17 @@ function FilterNav({filterBtn}) {
             <div className="NavContainer">
                 <button onClick={onClick} className="popular">
                     <FontAwesomeIcon icon={faThumbsUp}/>
-                    <div className="popular">Popular</div>
+                    <div className="popular">인기</div>
                 </button>
                 <button onClick={onClick} className="top_rated">
                     <FontAwesomeIcon icon={faSplotch}/>
-                    <div className="top_rated">Top</div>
-                    <div className="top_rated">Rated</div>
+                    <div className="top_rated">좋은평가</div>
+                    {/* <div className="top_rated">Rated</div> */}
                 </button>           
                 <button onClick={onClick} className="now_playing">
                     <FontAwesomeIcon icon={faPlay}/>
-                    <div className="now_playing">Now</div>
-                    <div className="now_playing">Playing</div>
+                    <div className="now_playing">상영중</div>
+                    {/* <div className="now_playing">Playing</div> */}
                 </button>
             </div>
         </>

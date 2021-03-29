@@ -2,19 +2,17 @@ import React from "react";
 import DisplayMovieMap from "./DisplayMovieMap";
 
 function DisplayMovie({filterType, results, detail, getMovieID}) {
+
     // const movie_image = `https://image.tmdb.org/t/p/original/${}`;
     let currentPage = "";
     if(filterType==='popular'){
-        currentPage = "Popular Movies"
+        currentPage = "인기 있는 영화"
     }
     if(filterType==='top_rated'){
-        currentPage = "Top Rated Movies"
+        currentPage = "좋은 평가 영화"
     }
     if(filterType==='now_playing'){
-        currentPage = "Now Playing Movies"
-    }
-    if(filterType==='latest'){
-        currentPage = "Latest Movies"
+        currentPage = "상영중인 영화"
     }
     return(
         <div className="Moive_Container">

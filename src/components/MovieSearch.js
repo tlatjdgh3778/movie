@@ -21,7 +21,7 @@ function MovieSearch({searchData}) {
         <div className="HeaderContainer">
             <button className="logo"><FontAwesomeIcon icon={faTicketAlt}/></button>
             <form className="headerSearch">
-                <input onChange={onChange} type="text" value={text} placeholder="Search movie..."></input>
+                <input onChange={onChange} type="text" value={text} placeholder=""></input>
                 <button onClick={onClick} ><FontAwesomeIcon icon={faSearch}/></button>
             </form>
         </div>

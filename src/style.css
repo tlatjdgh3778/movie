@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 * {
   margin: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -61,7 +62,7 @@ section {
 .headerSearch button {
   position: absolute;
   border-style: none;
-  top: 17px;
+  top: 18px;
   left: 300px;
   background-color: #0c1629;
   color: rgb(226, 226, 226);
@@ -93,13 +94,13 @@ aside {
   background-color: #0f1b35;
   color: #55a7f3;
   border-style: none;
-  font-size: 18px;
+  font-size: 16px;
   outline: none;
   cursor: pointer;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  margin: 20px 10px;
+  margin: 20px 0;
 }
 .NavContainer button:active {
   background-color: #1c305c;
@@ -213,7 +214,7 @@ aside {
 
 .detailImg {
   width: 350px;
-  height: 400px;
+  height: 515px;
   object-fit: cover;
   border-radius: 5px;
   box-shadow: 6px 6px 14px rgb(0 0 0 / 42%);
@@ -251,7 +252,7 @@ aside {
 }
 .detailOverview {
   font-size: 20px;
-  line-height: 24px;
+  line-height: 30px;
 }
 
 .modalDiv {

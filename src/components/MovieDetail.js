@@ -14,6 +14,7 @@ function MovieDetail({details, closeDetail}) {
     const onClick = (e) => {
         closeDetail();
     }
+    console.log(details);
     return(
         // detail 페이지 부분
         <div className="detailContainer">
@@ -27,21 +28,21 @@ function MovieDetail({details, closeDetail}) {
                 <div className="detailInfo">
                     <div className="detailTitle">{details.title}</div>
                     <div className="detailGenres">
-                        <span>Genres : </span>
+                        <span>장르 : </span>
                         <span>{details.genres.map((genre)=>{
                             return <MovieGenre key={genre.id} genre={genre.name}></MovieGenre>
                         })}</span>
                     </div>
                     <div className="detailRuntime">
-                        <span>Runtime : </span>
-                        <span>{details.runtime} min</span>
+                        <span>상영 시간 : </span>
+                        <span>{details.runtime} 분</span>
                     </div>
                     <div className="detailDate">
-                        <span>Release Date : </span>
+                        <span>개봉일 : </span>
                         <span>{details.release_date}</span>
                     </div>
-                    <div className="detailVote">{details.vote_average} / 10</div>
-                    <div className="detailOverviewTitle">Overview</div>
+                    <div className="detailVote">평점 : {details.vote_average} / 10</div>
+                    <div className="detailOverviewTitle">개요</div>
                     <div className="detailOverview">{details.overview}</div>
                 </div>
             </div>
