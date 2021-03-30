@@ -9,17 +9,20 @@ function DisplayMovie({filterType, results, detail, getMovieID, goodBtn}) {
     // const movie_image = `https://image.tmdb.org/t/p/original/${}`;
     let currentPage = "";
     if(filterType==='popular'){
-        currentPage = "인기 있는 영화"
+        currentPage = "인기 있는 영화";
     }
-    if(filterType==='top_rated'){
-        currentPage = "좋은 평가 영화"
+    else if(filterType==='top_rated'){
+        currentPage = "좋은 평가 영화";
     }
-    if(filterType==='now_playing'){
-        currentPage = "상영중인 영화"
+    else if(filterType==='now_playing'){
+        currentPage = "상영중인 영화";
     }
-    if(filterType==='good'){
-        currentPage = "좋아하는 영화"
+    else if(filterType==='good'){
+        currentPage = "좋아하는 영화";
+    }else {
+        currentPage = "'" + filterType + "'" + " 에 대한 결과";
     }
+
     const dataAll = Object.keys(localStorage);
 
     const deleteGood = () => {

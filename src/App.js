@@ -44,14 +44,13 @@ function App() {
   // 1자 이상일 때는 api 호출하고 해당하는 영화가 없으면 movie not fount 모달 창 보여주고
   // 해당하는 영화가 있으면 setMovie로 해당하는 영화들에 대한 정보를 results 에 저장
   const searchDataMovie = async (search_data, e) => {
-
       try{
         const search_response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=ko&query=${search_data}&page=1&include_adult=false`);
 
         const search_response_data = await search_response.json();
         
         if(search_response_data.results.length>0){
-          setMovie({...movie, results:search_response_data.results, detail:false, goodBtn:false});
+          setMovie({...movie, results:search_response_data.results, detail:false, goodBtn:false, filterType:search_data});
         }else{
           setMovie({...movie, alert:true, alertMsg:"Movie not found"});
           setTimeout(()=>{
