@@ -341,6 +341,14 @@ aside {
   .detailInfo {
     padding: 0;
   }
+  .emptyHeart {
+    top: -25px;
+    left: 10px;
+  }
+  .fillHeart {
+    top: -32px;
+    left: 10px;
+  }
 }
 @media screen and (max-width: 600px) {
   .closeBtn {

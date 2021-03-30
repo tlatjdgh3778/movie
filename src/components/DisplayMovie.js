@@ -29,7 +29,7 @@ function DisplayMovie({filterType, results, detail, getMovieID, goodBtn}) {
     if(goodBtn===true){
         
         return (
-        <div className="moiveContainer">
+        <div className="movieContainer">
             <h1 className="currentPage">{currentPage}</h1>
             {dataAll.map((storageKey)=> {
                 return <GoodMovie deleteGood={deleteGood} storageKey={storageKey}></GoodMovie>
@@ -38,7 +38,7 @@ function DisplayMovie({filterType, results, detail, getMovieID, goodBtn}) {
         );
     }else{
         return(
-            <div className="moiveContainer">
+            <div className="movieContainer">
             <h1 className="currentPage">{currentPage}</h1>
             <>
                 {results.map((result)=>{
