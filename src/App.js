@@ -53,14 +53,14 @@ function App() {
         if(search_response_data.results.length>0){
           setMovie({...movie, results:search_response_data.results, detail:false, goodBtn:false, filterType:search_data});
         }else{
-          setMovie({...movie, alert:true, alertMsg:"Movie not found"});
+          setMovie({...movie, alert:true, alertMsg:"해당하는 영화가 없습니다"});
           setTimeout(()=>{
             setMovie({...movie, alert:false});
           },2000);
         }
       }catch(error){
         console.log(error);
-        setMovie({...movie, alert:true, alertMsg:"Please enter the title"});
+        setMovie({...movie, alert:true, alertMsg:"제목을 입력해주세요"});
         setTimeout(()=>{
           setMovie({...movie, alert:false});
         },2000);;
