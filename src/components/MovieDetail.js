@@ -74,7 +74,7 @@ function MovieDetail({details, closeDetail, videos, getMovieID}) {
             </section>
             <section>
                 <div className="inSection">
-                        <h1 className="videosh1">관련 영상</h1>
+                        <h1 className="videosh1">비슷한 영화</h1>
                         <div className="swiper-container">
                             <div className="videos">
                                 {videos.results.map((result) => {

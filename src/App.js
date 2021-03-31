@@ -93,6 +93,10 @@ function App() {
   // Didmount
   useEffect(()=> filterBtn('popular'),[]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [movie]);
+
   return (
     <>
     <AlertModal
