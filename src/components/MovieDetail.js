@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import MovieGenre from "./MovieGenre";
+import MovieVideos from "./MovieVideos";
 
 // import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { faTimesCircle,faHeart } from "@fortawesome/free-regular-svg-icons";
 import {  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function MovieDetail({details, closeDetail}) {
+function MovieDetail({details, closeDetail, videos, getMovieID}) {
+    console.log(videos.results);
+
     const [state, setState] = useState({
         id:'',
         good:false,
@@ -35,14 +38,13 @@ function MovieDetail({details, closeDetail}) {
     return(
         // detail 페이지 부분
         <div className="detailContainer">
-            <div className="backdropContainer"> 
+            <section className="backdropContainer"> 
                 <img className="backdropImg" src={backdrop_img} alt={details.title}></img>
-                <div className="backShadow"></div> 
-            </div>
-            <div className="movieDetail">
-                <div><img className="detailImg" src={poster_img} alt={details.title}></img></div>
-                {state.good?<button className="fillHeart" onClick={deleteLocal}>❤</button>:
-                <button className="emptyHeart" onClick={pushLocal}><FontAwesomeIcon icon={faHeart}/></button>}
+            </section>
+            <section>
+                <div className="movieDetail">
+                <img className="detailImg" src={poster_img} alt={details.title}></img>
+                
                 <button className="closeBtn" onClick={onClick}><FontAwesomeIcon icon={faTimesCircle}/></button>            
                 <div className="detailInfo">
                     <div className="detailTitle">{details.title}</div>
@@ -63,8 +65,31 @@ function MovieDetail({details, closeDetail}) {
                     <div className="detailVote">평점 : {details.vote_average} / 10</div>
                     <div className="detailOverviewTitle">개요</div>
                     <div className="detailOverview">{details.overview}</div>
+                    <span>{state.good?<button className="fillHeart" onClick={deleteLocal}>❤</button>:
+                    <button className="emptyHeart" onClick={pushLocal}><FontAwesomeIcon icon={faHeart}/></button>}
+                    </span>
+                    <span> 이 영화가 마음에 들어요  </span>                     
                 </div>
-            </div>
+                </div>
+            </section>
+            <section>
+                <div className="inSection">
+                        <h1 className="videosh1">관련 영상</h1>
+                        <div className="swiper-container">
+                            <div className="videos">
+                                {videos.results.map((result) => {
+                                    return <MovieVideos
+                                    id={result.id}
+                                    title={result.title}
+                                    poster_path={result.poster_path}
+                                    vote={result.vote_average}
+                                    release_date={result.release_date}
+                                    getMovieID={getMovieID}></MovieVideos>
+                                })}
+                            </div>
+                        </div>
+                </div>
+            </section>
         </div>
     );
 }

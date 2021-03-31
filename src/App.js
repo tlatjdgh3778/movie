@@ -18,6 +18,7 @@ function App() {
     alert:false,
     alertMsg:'',
     goodBtn:false,
+    videos:[],
   })
 
   // filter button 을 누르면 popular, top rated, now playing 중에 해당하는 value 값을 가져와서(name) targetBtn에 저장
@@ -80,9 +81,12 @@ function App() {
   const getMovieID = async(id) => {
       
     const id_response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=ko`);
+    const video_response = await fetch(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=ko&page=1`);
 
     const id_response_data = await id_response.json();
-    setMovie({...movie, details:id_response_data, detail:true, id:id, goodBtn:false });
+    const video_response_data = await video_response.json();
+
+    setMovie({...movie, details:id_response_data, detail:true, id:id, goodBtn:false, videos:video_response_data });
   }
 
   // 제일 처음 화면에는 popular 목록들을 보여줌
@@ -106,11 +110,13 @@ function App() {
         filterBtn={filterBtn}
         ></FilterNav>
       </aside>
-      <section>
+      <article>
         {movie.detail?
         <MovieDetail
         details={movie.details}
         movieid={movie.id}
+        videos={movie.videos}
+        getMovieID={getMovieID}
         closeDetail={closeDetail}
         ></MovieDetail>:
         <DisplayMovie 
@@ -120,7 +126,7 @@ function App() {
         getMovieID={getMovieID}
         goodBtn={movie.goodBtn}
         ></DisplayMovie>}
-      </section>
+      </article>
     </main>
     </>
   );
